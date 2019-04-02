@@ -30,7 +30,7 @@ class Receiver():
 
         def receiveFile(self):
                 sock = socket(AF_INET, SOCK_STREAM)
-                sock.bind((self.ip,self.port))
+                sock.bind(('',self.port))
                 sock.listen(1)
                 client, client_addres = sock.accept()
                 print("%s:%s conectado." % client_addres)
@@ -74,9 +74,9 @@ class Receiver():
         def setIpButton(self):
                 global e1
                 global e2
-                self.ip = e1.get()
+                # self.ip = e1.get()
                 self.port = int(e2.get())
-                e1.destroy()
+                # e1.destroy()
                 e2.destroy()
                 setIpButton1.destroy() 
 
@@ -99,16 +99,17 @@ selectFileButton = Button(window, text="Selecionar diretorio", command=receiver.
 closeButton = Button(window, text="Fechar", command=close)
 receiveButton = Button(window, text="Iniciar FTP", command=receiver.receiveFile)
 
-e1 = Entry(window)
+# e1 = Entry(window)
 e2 = Entry(window)
 
-e1.place(x=20, y=20)
+# e1.place(x=20, y=20)
 e2.place(x=20, y=40)
 
 setIpButton1 = Button(window, text="Configurar conexao", command=receiver.setIpButton)
 
-e1.insert(END, IP)
+# e1.insert(END, IP)
 e2.insert(END, str(PORT))
+e2.focus()
 
 receiveButton.place(x=20, y=100)
 setIpButton1.place(x=20, y=60)
