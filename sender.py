@@ -55,11 +55,16 @@ class Sender:
         print("B: " + str(b))
         print("FileName: " + self.getOnlyFileName())
         sock.sendto(b, (self.ip,self.port))
+        # j = 0
         for i in range(n+1):
             #Formando pacote de dados
             packet = data[i*self.buffer:(i+1)*self.buffer]
             
             sock.sendto(packet,(self.ip,self.port))
+            j = j + 1
+            # if j == 6:
+                
+
             #Tempo de espera de chegada do pacote
             # time.sleep(SLEEP_TIME)
                 
@@ -96,7 +101,7 @@ def close():
     window.quit()
 
 
-BUFFER = 20
+BUFFER = 200
 SLEEP_TIME = 0.02
 IP = "127.0.0.1"
 PORT = 6061
